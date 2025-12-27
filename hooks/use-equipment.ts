@@ -73,7 +73,9 @@ export function useEquipmentMaintenanceHistory(equipmentId: string | null) {
                 .order("created_at", { ascending: false });
 
             if (error) throw error;
-            return data;
+            return data as (Database["public"]["Tables"]["maintenance_requests"]["Row"] & {
+                assigned_technician: Database["public"]["Tables"]["profiles"]["Row"] | null
+            })[];
         },
         enabled: !!equipmentId,
     });
@@ -114,10 +116,10 @@ export function useUpdateEquipment() {
             id: string;
             updates: Database["public"]["Tables"]["equipment"]["Update"];
         }) => {
-            // @ts-ignore - Supabase type inference issue with update operations
-            const { data, error } = await supabase
-                .from("equipment")
-                .update(updates as any)
+            // Bypass strict type checking for this update operation
+            const { data, error } = await (supabase
+                .from("equipment") as any)
+                .update(updates)
                 .eq("id", id)
                 .select()
                 .single();

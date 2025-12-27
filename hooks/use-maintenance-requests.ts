@@ -79,10 +79,10 @@ export function useUpdateRequestStatus() {
                 updateData.completed_at = new Date().toISOString();
             }
 
-            // @ts-ignore - Supabase type inference issue with update operations
-            const { data, error } = await supabase
-                .from("maintenance_requests")
-                .update(updateData as any)
+            // Bypass strict type checking for this update operation
+            const { data, error } = await (supabase
+                .from("maintenance_requests") as any)
+                .update(updateData)
                 .eq("id", id)
                 .select()
                 .single();
@@ -140,8 +140,11 @@ export function useCreateRequest() {
                     .eq("id", request.equipment_id)
                     .single();
 
-                if (equipment?.maintenance_team_id) {
-                    finalRequest.team_id = equipment.maintenance_team_id as string | null;
+                // Explicitly cast to any to avoid type errors with inferred 'never' types or missing properties
+                const equipmentData = equipment as any;
+
+                if (equipmentData?.maintenance_team_id) {
+                    finalRequest.team_id = equipmentData.maintenance_team_id as string | null;
                 }
             }
 
