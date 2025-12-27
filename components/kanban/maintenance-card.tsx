@@ -27,7 +27,7 @@ export function MaintenanceCard({ request, isDragging }: MaintenanceCardProps) {
 
     return (
         <Card
-            className={`cursor-move hover:shadow-md transition-shadow ${isDragging ? "opacity-50 rotate-2" : ""
+            className={`cursor-move transition-all duration-200 hover:shadow-lg hover:border-primary/50 hover:-translate-y-1 ${isDragging ? "opacity-50 rotate-2 shadow-xl ring-2 ring-primary" : ""
                 }`}
         >
             <CardContent className="p-4">

@@ -8,6 +8,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Users, Wrench, AlertCircle, Plus } from "lucide-react";
 import Link from "next/link";
+import { CreateTeamDialog } from "@/components/teams/create-team-dialog";
 
 export default function TeamsPage() {
     const supabase = createClient();
@@ -36,10 +37,7 @@ export default function TeamsPage() {
                         Manage maintenance teams and their members
                     </p>
                 </div>
-                <Button>
-                    <Plus className="w-4 h-4 mr-2" />
-                    Create Team
-                </Button>
+                <CreateTeamDialog />
             </div>
 
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">

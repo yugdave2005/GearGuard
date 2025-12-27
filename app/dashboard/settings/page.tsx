@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Moon, Sun, Monitor, Bell, Shield, User } from "lucide-react";
 import { useTheme } from "next-themes";
+import { EditProfileDialog } from "@/components/settings/edit-profile-dialog";
 
 export default function SettingsPage() {
     const { setTheme } = useTheme();
@@ -88,7 +89,7 @@ export default function SettingsPage() {
                     </CardHeader>
                     <CardContent>
                         <div className="flex justify-end">
-                            <Button>Edit Profile</Button>
+                            <EditProfileDialog />
                         </div>
                     </CardContent>
                 </Card>

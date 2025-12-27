@@ -55,7 +55,7 @@ export default function EquipmentPage() {
             {/* Equipment grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredEquipment?.map((item) => (
-                    <Card key={item.id} className="hover:shadow-lg transition-shadow">
+                    <Card key={item.id} className="transition-all duration-200 hover:shadow-lg hover:border-primary/50 hover:-translate-y-1">
                         <CardHeader>
                             <div className="flex items-start justify-between">
                                 <div className="flex items-center gap-2">
