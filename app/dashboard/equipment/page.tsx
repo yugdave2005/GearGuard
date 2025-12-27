@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Loader2, Plus, Search, Wrench } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { AddEquipmentDialog } from "@/components/equipment/add-equipment-dialog";
 
 export default function EquipmentPage() {
     const { data: equipment, isLoading } = useEquipment();
@@ -27,17 +28,14 @@ export default function EquipmentPage() {
 
     return (
         <div>
-            <div className="flex items-center justify-between mb-6">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-6 gap-4">
                 <div>
                     <h1 className="text-3xl font-bold">Equipment Management</h1>
                     <p className="text-muted-foreground mt-2">
                         Track and manage all assets
                     </p>
                 </div>
-                <Button>
-                    <Plus className="w-4 h-4 mr-2" />
-                    Add Equipment
-                </Button>
+                <AddEquipmentDialog />
             </div>
 
             {/* Search bar */}

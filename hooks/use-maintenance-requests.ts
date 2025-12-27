@@ -90,7 +90,32 @@ export function useUpdateRequestStatus() {
             if (error) throw error;
             return data;
         },
-        onSuccess: () => {
+        onMutate: async ({ id, status }) => {
+            // Cancel any outgoing refetches (so they don't overwrite our optimistic update)
+            await queryClient.cancelQueries({ queryKey: ["maintenance-requests"] });
+
+            // Snapshot the previous value
+            const previousRequests = queryClient.getQueryData<MaintenanceRequest[]>(["maintenance-requests"]);
+
+            // Optimistically update to the new value
+            queryClient.setQueryData<MaintenanceRequest[]>(["maintenance-requests"], (old) => {
+                if (!old) return [];
+                return old.map((req) =>
+                    req.id === id ? { ...req, status } : req
+                );
+            });
+
+            // Return a context object with the snapshotted value
+            return { previousRequests };
+        },
+        onError: (_err, _newRequest, context) => {
+            // If the mutation fails, use the context returned from onMutate to roll back
+            if (context?.previousRequests) {
+                queryClient.setQueryData(["maintenance-requests"], context.previousRequests);
+            }
+        },
+        onSettled: () => {
+            // Always refetch after error or success:
             queryClient.invalidateQueries({ queryKey: ["maintenance-requests"] });
         },
     });

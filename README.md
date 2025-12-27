@@ -45,29 +45,25 @@ The application will be available at: **http://localhost:3000**
 2. Create an account with your email and password
 3. You'll be automatically redirected to the dashboard
 
-### Add Sample Data (Optional)
+### Add Sample Data (Recommended)
+We have prepared a comprehensive seed script to populate your database with realistic test data (Teams, Equipment, Requests, Users).
 
-#### Create a Team
-```sql
-INSERT INTO teams (name, description) VALUES 
-('Maintenance Team A', 'Primary maintenance team');
-```
+1. Open **Supabase SQL Editor**
+2. Copy the contents of `supabase/seed.sql`
+3. Click **Run**
 
-#### Create Equipment
-```sql
-INSERT INTO equipment (name, serial_number, location, department, maintenance_team_id) VALUES
-('Industrial Pump #1', 'PUMP-001', 'Building A', 'Manufacturing', 
-  (SELECT id FROM teams WHERE name = 'Maintenance Team A'));
-```
-
-#### Create Maintenance Request
-```sql
-INSERT INTO maintenance_requests (equipment_id, subject, request_type, scheduled_date) VALUES
-((SELECT id FROM equipment WHERE serial_number = 'PUMP-001'), 
- 'Routine Inspection', 'preventive', NOW() + INTERVAL '7 days');
-```
+This will generate:
+- 4 Maintenance Teams
+- 10 Technicians (with avatars)
+- 50 Equipment items
+- 100 Maintenance Requests
 
 ## 4. Features Overview
+
+### 📱 Responsive Design (New!)
+- **Mobile-First Layout**: Optimized for all screen sizes
+- **Mobile Navigation**: Drawer menu for easy access on small screens
+- **Adaptive Grids**: Kanban and Equipment lists stack beautifully on mobile
 
 ### Dashboard (Kanban Board)
 - **Drag-and-drop** maintenance requests between status columns

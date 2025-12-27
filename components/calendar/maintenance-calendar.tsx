@@ -4,6 +4,7 @@ import { Calendar as BigCalendar, dateFnsLocalizer, View, Event as CalendarEvent
 import { format, parse, startOfWeek, getDay } from "date-fns";
 import { enUS } from "date-fns/locale";
 import "react-big-calendar/lib/css/react-big-calendar.css";
+import "./calendar-theme.css";
 import { useMaintenanceRequests } from "@/hooks/use-maintenance-requests";
 import { useState, useMemo } from "react";
 import { getStatusColor } from "@/lib/utils";
@@ -58,10 +59,8 @@ export function MaintenanceCalendar() {
                 date={date}
                 onNavigate={setDate}
                 eventPropGetter={(event: any) => ({
-                    style: {
-                        backgroundColor: event.resource?.status ?
-                            getStatusColor(event.resource.status).replace("bg-", "#") : "#3b82f6",
-                    },
+                    className: (event.resource?.status ?
+                        getStatusColor(event.resource.status) : "bg-blue-500") + " text-white border-0",
                 })}
             />
         </div>

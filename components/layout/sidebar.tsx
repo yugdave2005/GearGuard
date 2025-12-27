@@ -19,11 +19,16 @@ const navItems = [
     { href: "/dashboard/teams", label: "Teams", icon: Users },
 ];
 
-export function Sidebar() {
+interface SidebarProps {
+    className?: string;
+    onClose?: () => void;
+}
+
+export function Sidebar({ className, onClose }: SidebarProps) {
     const pathname = usePathname();
 
     return (
-        <div className="w-64 border-r bg-card h-screen sticky top-0 flex flex-col">
+        <div className={cn("w-64 border-r bg-card h-screen flex flex-col", className)}>
             {/* Logo */}
             <div className="p-6 border-b">
                 <div className="flex items-center gap-2">
@@ -47,6 +52,7 @@ export function Sidebar() {
                             <li key={item.href}>
                                 <Link
                                     href={item.href}
+                                    onClick={onClose}
                                     className={cn(
                                         "flex items-center gap-3 px-4 py-3 rounded-lg transition-colors",
                                         isActive

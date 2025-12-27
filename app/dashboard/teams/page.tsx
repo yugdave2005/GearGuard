@@ -6,7 +6,8 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Users, Tool, AlertCircle, Plus } from "lucide-react";
+import { Users, Wrench, AlertCircle, Plus } from "lucide-react";
+import Link from "next/link";
 
 export default function TeamsPage() {
     const supabase = createClient();
@@ -22,7 +23,7 @@ export default function TeamsPage() {
           active_requests:maintenance_requests(count)
         `);
             if (error) throw error;
-            return data;
+            return data as any[];
         },
     });
 
@@ -65,7 +66,9 @@ export default function TeamsPage() {
                             </div>
 
                             <div className="mt-4 pt-4 border-t flex justify-end">
-                                <Button variant="ghost" size="sm">View Details</Button>
+                                <Link href={`/dashboard/teams/${team.id}`}>
+                                    <Button variant="ghost" size="sm">View Details</Button>
+                                </Link>
                             </div>
                         </CardContent>
                     </Card>
