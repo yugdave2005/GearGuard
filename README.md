@@ -2,7 +2,7 @@
 
 > **Streamline your maintenance operations with power, precision, and ease.**
 
-![Maintenance Dashboard](assets/maintenance%20dashboard.jpeg)
+![Maintenance Dashboard](assets/maintenance%20dashboard.png)
 
 ## 💡 The Idea
 
@@ -16,7 +16,7 @@ Our goal is to **reduce downtime**, **extend equipment lifespan**, and **empower
 
 GearGuard connects your **Equipment**, **Teams**, and **Maintenance Requests** into a seamless workflow.
 
-![Working of Equipment](assets/working%20of%20equipment.jpeg)
+![Working of Equipment](assets/working%20of%20equipment.png)
 
 1.  **Asset Management**: Register all your equipment, complete with purchase details, warranty info, and images.
 2.  **Team Organization**: Organize technicians into specialized maintenance teams (e.g., Electrical, Mechanical).
@@ -33,37 +33,42 @@ GearGuard connects your **Equipment**, **Teams**, and **Maintenance Requests** i
 ### 1. Interactive Dashboard
 The heart of GearGuard. A powerful **Kanban Board** allows for drag-and-drop management of maintenance requests. Real-time updates utilize Supabase to keep everyone in sync.
 
-![Maintenance Dashboard](assets/maintenance%20dashboard.jpeg)
+![Maintenance Dashboard](assets/maintenance%20dashboard.png)
 
-### 2. Comprehensive Equipment Management
+### 2. Advanced Analysis & Reporting
+Gain actionable insights with our dedicated analysis module. Visualize maintenance trends, track team performance, and monitor request status distributions.
+
+![Analysis Dashboard](assets/analysis.png)
+
+### 3. Comprehensive Equipment Management
 Keep a digital twin of your facility. Search, filter, and view the status of every piece of machinery.
 
-![Equipment Management](assets/Equipment%20Management.jpeg)
+![Equipment Management](assets/Equipment%20Management.png)
 
 **Detailed Insights**: Drill down into specific equipment to see its full history, assigned technicians, and specifications.
 
-![Equipment Details](assets/equipment%20details.jpeg)
+![Equipment Details](assets/equipment%20details.png)
 
-### 3. Smart Scheduling & Calendar
+### 4. Smart Scheduling & Calendar
 Never miss a preventive maintenance check. Our **Calendar View** gives you a monthly, weekly, and daily perspective of your maintenance load.
 
 | Calendar Overview | Schedule Maintenance |
 | :---: | :---: |
-| ![Maintenance Calendar](assets/maintenance%20calendar.jpeg) | ![Schedule Maintenance](assets/schedule%20maintenance.jpeg) |
+| ![Maintenance Calendar](assets/maintenance%20calendar.png) | ![Schedule Maintenance](assets/schedule%20maintenance.png) |
 
-### 4. Team & User Management
+### 5. Team & User Management
 Manage your workforce effectively. Create teams, assign roles, and track individual performance.
 
 | Teams Overview | Team Details |
 | :---: | :---: |
-| ![Teams](assets/Teams.jpeg) | ![Team 2](assets/team2.jpeg) |
+| ![Teams](assets/Teams.png) | ![Team 2](assets/team2.png) |
 
-### 5. Seamless User Experience
+### 6. Seamless User Experience
 From a secure **Login** to a personalized **Profile** and customizable **Settings**, every interaction is designed for clarity and speed.
 
 | Login View | User Profile | Settings |
 | :---: | :---: | :---: |
-| ![Login](assets/login.jpeg) | ![Profile](assets/profile.jpeg) | ![Settings](assets/settings.jpeg) |
+| ![Login](assets/login.jpeg) | ![Profile](assets/profile.png) | ![Settings](assets/settings.png) |
 
 ---
 
