@@ -1,157 +1,149 @@
-# GearGuard - Complete Setup Instructions
+# 🛡️ GearGuard - The Ultimate Maintenance Tracker
 
-## 1. Supabase Setup
+> **Streamline your maintenance operations with power, precision, and ease.**
 
-### Step 1: Create Supabase Project
-1. Go to [supabase.com](https://supabase.com) and sign in
-2. Click "New Project"
-3. Fill in project details and wait for setup to complete
+![Maintenance Dashboard](assets/maintenance%20dashboard.jpeg)
 
-### Step 2: Run Database Schema
-1. In your Supabase dashboard, go to the SQL Editor
-2. Copy and paste the contents of `supabase/schema.sql`
-3. Click "Run" to execute the schema
-4. Copy and paste the contents of `supabase/rls-policies.sql`
-5. Click "Run" to execute the RLS policies
+## 💡 The Idea
 
-### Step 3: Get API Credentials
-1. In your Supabase dashboard, go to **Settings** > **API**
-2. Copy the **Project URL** and **anon public** key
-3. Create a `.env.local` file in the project root:
+Maintenance management is often chaotic, relying on spreadsheets, paper forms, and fragmented communication. **GearGuard** changes the game by providing a **centralized, mobile-first platform** to track, schedule, and manage equipment maintenance.
 
-```env
-NEXT_PUBLIC_SUPABASE_URL=your-project-url
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
-```
+Our goal is to **reduce downtime**, **extend equipment lifespan**, and **empower teams** with real-time visibility into their maintenance operations. Whether you are managing a small workshop or a large industrial floor, GearGuard keeps your gears turning.
 
-## 2. Run the Application
+---
 
-### Install Dependencies (if not already done)
+## 🚀 How It Works
+
+GearGuard connects your **Equipment**, **Teams**, and **Maintenance Requests** into a seamless workflow.
+
+![Working of Equipment](assets/working%20of%20equipment.jpeg)
+
+1.  **Asset Management**: Register all your equipment, complete with purchase details, warranty info, and images.
+2.  **Team Organization**: Organize technicians into specialized maintenance teams (e.g., Electrical, Mechanical).
+3.  **Request Lifecycle**:
+    *   **Create**: Trigger maintenance requests manually or schedule preventive maintenance.
+    *   **Assign**: Requests are auto-assigned to the correct team based on the equipment profile.
+    *   **Track**: Use the **Kanban Board** to move requests from "New" → "In Progress" → "Repaired".
+    *   **Resolve**: Complete requests, log outcomes, or mark equipment as "Scrap" if unrepairable.
+
+---
+
+## 📸 Features & Visual Tour
+
+### 1. Interactive Dashboard
+The heart of GearGuard. A powerful **Kanban Board** allows for drag-and-drop management of maintenance requests. Real-time updates utilize Supabase to keep everyone in sync.
+
+![Maintenance Dashboard](assets/maintenance%20dashboard.jpeg)
+
+### 2. Comprehensive Equipment Management
+Keep a digital twin of your facility. Search, filter, and view the status of every piece of machinery.
+
+![Equipment Management](assets/Equipment%20Management.jpeg)
+
+**Detailed Insights**: Drill down into specific equipment to see its full history, assigned technicians, and specifications.
+
+![Equipment Details](assets/equipment%20details.jpeg)
+
+### 3. Smart Scheduling & Calendar
+Never miss a preventive maintenance check. Our **Calendar View** gives you a monthly, weekly, and daily perspective of your maintenance load.
+
+| Calendar Overview | Schedule Maintenance |
+| :---: | :---: |
+| ![Maintenance Calendar](assets/maintenance%20calendar.jpeg) | ![Schedule Maintenance](assets/schedule%20maintenance.jpeg) |
+
+### 4. Team & User Management
+Manage your workforce effectively. Create teams, assign roles, and track individual performance.
+
+| Teams Overview | Team Details |
+| :---: | :---: |
+| ![Teams](assets/Teams.jpeg) | ![Team 2](assets/team2.jpeg) |
+
+### 5. Seamless User Experience
+From a secure **Login** to a personalized **Profile** and customizable **Settings**, every interaction is designed for clarity and speed.
+
+| Login View | User Profile | Settings |
+| :---: | :---: | :---: |
+| ![Login](assets/login.jpeg) | ![Profile](assets/profile.jpeg) | ![Settings](assets/settings.jpeg) |
+
+---
+
+## 🛠️ Implementation & Tech Stack
+
+GearGuard is built with a modern, type-safe stack designed for performance and scalability.
+
+### Architecture
+*   **Frontend**: Built with **Next.js 15 (App Router)** for server-side rendering and rapid page loads.
+*   **Database**: **Supabase (PostgreSQL)** serves as the backbone, providing relational data storage and real-time subscriptions.
+*   **Authentication**: Secure user management via **Supabase Auth**.
+*   **Styling**: **Tailwind CSS** enables a bespoke, responsible design system that works on any device.
+
+### Tech Stack Summary
+| Category | Technology | Usage |
+| :--- | :--- | :--- |
+| **Framework** | Next.js 15 | Core application framework |
+| **Language** | TypeScript | Type safety across the full stack |
+| **Database** | Supabase | Postgres DB, Auth, Realtime |
+| **State Mgmt** | TanStack Query | Server state synchronization |
+| **UI Components** | Radix UI | Accessible component primitives |
+| **Styling** | Tailwind CSS | Utility-first CSS |
+| **Drag & Drop** | @hello-pangea/dnd | Kanban board interactions |
+| **Calendar** | react-big-calendar | PM scheduling interface |
+
+---
+
+## ⚡ Deployment & Setup
+
+### 1. Supabase Setup
+1.  **Create Project**: Go to [supabase.com](https://supabase.com), create a new project.
+2.  **Database Schema**:
+    *   Run `supabase/schema.sql` in the SQL Editor to create tables.
+    *   Run `supabase/rls-policies.sql` to secure your data.
+3.  **Environment Variables**:
+    *   Get your Project URL and Anon Key from Project Settings > API.
+    *   Create `.env.local`:
+        ```env
+        NEXT_PUBLIC_SUPABASE_URL=your-project-url
+        NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key
+        ```
+
+### 2. Run Locally
 ```bash
+# Install dependencies
 npm install
-```
 
-### Start Development Server
-```bash
+# Start development server
 npm run dev
 ```
+Visit **http://localhost:3000** to see GearGuard in action.
 
-The application will be available at: **http://localhost:3000**
+### 3. Seed Data (Optional)
+To quickly populate your app with test data (Teams, Equipment, Requests):
+1.  Open Supabase SQL Editor.
+2.  Run the contents of `supabase/seed.sql`.
 
-## 3. Initial Usage
+---
 
-### Create First User
-1. Navigate to **http://localhost:3000/signup**
-2. Create an account with your email and password
-3. You'll be automatically redirected to the dashboard
+## 📂 Project Structure
 
-### Add Sample Data (Recommended)
-We have prepared a comprehensive seed script to populate your database with realistic test data (Teams, Equipment, Requests, Users).
-
-1. Open **Supabase SQL Editor**
-2. Copy the contents of `supabase/seed.sql`
-3. Click **Run**
-
-This will generate:
-- 4 Maintenance Teams
-- 10 Technicians (with avatars)
-- 50 Equipment items
-- 100 Maintenance Requests
-
-## 4. Features Overview
-
-### 📱 Responsive Design (New!)
-- **Mobile-First Layout**: Optimized for all screen sizes
-- **Mobile Navigation**: Drawer menu for easy access on small screens
-- **Adaptive Grids**: Kanban and Equipment lists stack beautifully on mobile
-
-### Dashboard (Kanban Board)
-- **Drag-and-drop** maintenance requests between status columns
-- **Real-time updates** - changes sync across all users
-- **Overdue indicators** - red badges for past-due requests
-- **Status columns**: New, In Progress, Repaired, Scrap
-
-### Calendar View
-- View all **preventive maintenance** requests
-- Monthly and weekly views
-- Color-coded by status
-
-### Equipment Management
-- **Search** equipment by name or serial number
-- View all equipment with status badges
-- **Detailed view** includes:
-  - Purchase and warranty information
-  - Location and department
-  - Assigned technician and maintenance team
-  - **Maintenance History** - complete timeline of all work
-
-### Smart Features
-- **Auto-assignment**: When creating a request for equipment, the maintenance team is automatically assigned
-- **Scrap workflow**: Moving a request to "Scrap" automatically marks the equipment as scrap status
-
-## 5. Development Tips
-
-### Type Safety
-Run type checking:
 ```bash
-npm run type-check
-```
-
-### Build for Production
-```bash
-npm run build
-npm start
-```
-
-### Dark Mode
-Toggle dark mode using the sun/moon icon in the header
-
-## 6. Troubleshooting
-
-### "Invalid API Key" Error
-- Verify that `.env.local` exists and contains correct Supabase credentials
-- Restart the dev server after creating/updating `.env.local`
-
-### Database Connection Issues
-- Ensure RLS policies are executed
-- Check that schema was created successfully in Supabase SQL Editor
-
-### Login Issues
-- Verify email confirmation is disabled in Supabase Auth settings for development
-- Go to **Authentication** > **Email** in Supabase dashboard
-
-## Project Structure
-
-```
 gearguard/
-├── app/
-│   ├── (auth)/              # Login & Signup pages
-│   ├── (dashboard)/         # Dashboard routes
-│   │   ├── calendar/        # Calendar view
-│   │   ├── equipment/       # Equipment management
-│   │   └── page.tsx         # Kanban dashboard
-│   ├── layout.tsx           # Root layout
-│   └── globals.css          # Global styles
-├── components/
-│   ├── kanban/              # Kanban board components
-│   ├── calendar/            # Calendar components
-│   ├── layout/              # Sidebar & Header
-│   └── ui/                  # UI primitives
-├── hooks/                   # Custom React hooks
+├── app/                 # Next.js App Router pages
+│   ├── (auth)/          # Authentication routes
+│   ├── (dashboard)/     # Main app interface
+│   └── globals.css      # Design tokens
+├── components/          # Reusable UI components
+│   ├── kanban/          # Board-specific logic
+│   └── layout/          # Shell, Sidebar, Header
 ├── lib/
-│   ├── supabase/            # Supabase clients
-│   ├── providers/           # React providers
-│   └── utils.ts             # Utility functions
-├── types/                   # TypeScript types
-└── supabase/                # SQL schemas
+│   ├── supabase/        # Database client config
+│   └── providers/       # React Context providers
+└── supabase/            # SQL init scripts
 ```
 
-## Tech Stack
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **Backend**: Supabase (PostgreSQL)
-- **Auth**: Supabase Auth
-- **State**: TanStack Query
-- **Drag & Drop**: @hello-pangea/dnd
-- **Calendar**: react-big-calendar
+---
+
+<div align="center">
+
+**Built for the Odoo x Adani Hackathon**
+
+</div>
